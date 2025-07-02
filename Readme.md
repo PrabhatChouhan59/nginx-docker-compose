@@ -3,6 +3,7 @@ A full-stack web application demonstrating frontend-backend communication using 
 
 🏗️ Project Structure
 
+```text
 project-root/
 │ 
 ├── backend/
@@ -18,7 +19,8 @@ project-root/
 │       └── css/ 
 │           └── style.css 
 │ 
-└── docker-compose.yml 
+└── docker-compose.yml
+```
 
 🚀 Features
 
