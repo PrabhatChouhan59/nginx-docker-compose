@@ -3,9 +3,9 @@ A full-stack web application demonstrating frontend-backend communication using 
 
 🏗️ Project Structure
 
-project-root/ 
+project-root/
 │ 
-├── backend/ 
+├── backend/
 │   ├── Dockerfile 
 │   ├── package.json 
 │   └── server.js 
