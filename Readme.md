@@ -4,21 +4,18 @@ A full-stack web application demonstrating frontend-backend communication using 
 🏗️ Project Structure
 
 project-root/
-│
-├── backend/
-│   ├── Dockerfile
-│   ├── package.json
-│   └── server.js
-│
-├── frontend/
-│   ├── Dockerfile
-│   ├── index.html
-│   ├── nginx.conf
-│   └── static/
-│       └── css/
-│           └── style.css
-│
-└── docker-compose.yml
+  backend/
+    Dockerfile
+    package.json
+    server.js
+  frontend/
+    Dockerfile
+    index.html
+    nginx.conf
+    static/
+      css/
+        style.css
+  docker-compose.yml
 🚀 Features
 
 Frontend: Static HTML/CSS/JavaScript application served by Nginx
