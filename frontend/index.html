@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend App</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Frontend & Backend Connection</h1>
+            <p>Docker Compose Application</p>
+        </header>
+
+        <main>
+            <section class="status-section">
+                <h2>Backend Status</h2>
+                <div id="status" class="status-box">
+                    <p>Checking backend connection...</p>
+                </div>
+            </section>
+
+            <section class="data-section">
+                <h2>Backend Data</h2>
+                <button id="fetchData" class="btn">Fetch Data from Backend</button>
+                <div id="dataContainer" class="data-container"></div>
+            </section>
+
+            <section class="form-section">
+                <h2>Send Data to Backend</h2>
+                <form id="dataForm" class="form">
+                    <div class="input-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Data</button>
+                </form>
+                <div id="formResponse" class="response"></div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Check backend health on page load
+        async function checkBackendHealth() {
+            try {
+                const response = await fetch('/api/health');
+                const data = await response.json();
+                
+                document.getElementById('status').innerHTML = `
+                    <div class="status-success">
+                        <h3>✅ Backend Connected</h3>
+                        <p>Status: ${data.status}</p>
+                        <p>Message: ${data.message}</p>
+                        <p>Time: ${new Date(data.timestamp).toLocaleString()}</p>
+                    </div>
+                `;
+            } catch (error) {
+                document.getElementById('status').innerHTML = `
+                    <div class="status-error">
+                        <h3>❌ Backend Connection Failed</h3>
+                        <p>Error: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Fetch data from backend
+        async function fetchData() {
+            try {
+                const response = await fetch('/api/data');
+                const data = await response.json();
+                
+                document.getElementById('dataContainer').innerHTML = `
+                    <div class="data-success">
+                        <h3>Data from Backend:</h3>
+                        <p><strong>Message:</strong> ${data.message}</p>
+                        <div class="data-items">
+                            ${data.data.map(item => `
+                                <div class="data-item">
+                                    <h4>${item.name}</h4>
+                                    <p>${item.description}</p>
+                                    <small>ID: ${item.id}</small>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            } catch (error) {
+                document.getElementById('dataContainer').innerHTML = `
+                    <div class="data-error">
+                        <h3>❌ Failed to fetch data</h3>
+                        <p>Error: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Handle form submission
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                description: document.getElementById('description').value
+            };
+
+            try {
+                const response = await fetch('/api/data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+                
+                document.getElementById('formResponse').innerHTML = `
+                    <div class="response-success">
+                        <h3>✅ Data sent successfully!</h3>
+                        <p><strong>Message:</strong> ${data.message}</p>
+                        <p><strong>Received:</strong> ${JSON.stringify(data.received)}</p>
+                        <p><strong>Time:</strong> ${new Date(data.timestamp).toLocaleString()}</p>
+                    </div>
+                `;
+                
+                // Clear form
+                document.getElementById('dataForm').reset();
+                
+            } catch (error) {
+                document.getElementById('formResponse').innerHTML = `
+                    <div class="response-error">
+                        <h3>❌ Failed to send data</h3>
+                        <p>Error: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            checkBackendHealth();
+            
+            document.getElementById('fetchData').addEventListener('click', fetchData);
+            document.getElementById('dataForm').addEventListener('submit', handleFormSubmit);
+        });
+    </script>
+</body>
+</html>
