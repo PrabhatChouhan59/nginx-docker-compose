@@ -2,6 +2,8 @@ Frontend & Backend Connection with Docker Compose
 A full-stack web application demonstrating frontend-backend communication using Docker Compose. The project consists of a static frontend served by Nginx and a Node.js Express backend API, all containerized and orchestrated with Docker Compose.
 
 🏗️ Project Structure
+
+project-root/
 ├── backend/
 │   ├── Dockerfile
 │   ├── package.json
