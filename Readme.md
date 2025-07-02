@@ -19,6 +19,7 @@ project-root/
 │           └── style.css 
 │ 
 └── docker-compose.yml 
+
 🚀 Features
 
 Frontend: Static HTML/CSS/JavaScript application served by Nginx
