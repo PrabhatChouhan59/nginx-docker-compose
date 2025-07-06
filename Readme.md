@@ -101,6 +101,7 @@ Returns confirmation with received data
 
 Example API Responses
 GET /api/health
+```text
 json{
   "status": "OK",
   "message": "Backend server is running",
@@ -115,6 +116,7 @@ json{
     { "id": 3, "name": "Item 3", "description": "Third item" }
   ]
 }
+```
 🐳 Docker Configuration
 Services
 Frontend Service
