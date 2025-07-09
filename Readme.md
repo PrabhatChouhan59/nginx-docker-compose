@@ -1,7 +1,7 @@
-Frontend & Backend Connection with Docker Compose
+**Frontend & Backend Connection with Docker Compose**
 A full-stack web application demonstrating frontend-backend communication using Docker Compose. The project consists of a static frontend served by Nginx and a Node.js Express backend API, all containerized and orchestrated with Docker Compose.
 
-🏗️ Project Structure
+🏗️ **Project Structur**e
 
 ```text
 project-root/
@@ -22,7 +22,7 @@ project-root/
 └── docker-compose.yml
 ```
 
-🚀 Features
+🚀 **Feature**s
 
 Frontend: Static HTML/CSS/JavaScript application served by Nginx
 Backend: Node.js Express API server with CORS support
@@ -31,33 +31,33 @@ Health Checks: Built-in backend health monitoring
 API Proxy: Nginx proxies API requests to backend service
 Interactive UI: Form submission and data fetching from backend
 
-🛠️ Technologies Used
-Frontend
+🛠️ **Technologies Used**
+**Frontend**
 
 HTML5, CSS3, JavaScript (Vanilla)
 Nginx Alpine for serving static content
 Responsive design
 
-Backend
+**Backend**
 
 Node.js 18 (Alpine)
 Express.js framework
 CORS middleware
 RESTful API design
 
-DevOps
+**DevOps**
 
 Docker & Docker Compose
 Container networking
 Health checks
 
-📋 Prerequisites
+📋 **Prerequisites**
 
 Docker (version 20.0 or higher)
 Docker Compose (version 3.8 or higher)
 Git (for cloning the repository)
 
-🚀 Quick Start
+🚀 **Quick Start**
 
 Clone the repository
 git clone <your-repository-url>
@@ -66,7 +66,7 @@ cd <project-directory>
 Build and run with Docker Compose
 docker-compose up --build
 
-Access the application
+**Access the application**
 
 Frontend: http://localhost
 Backend API: http://localhost:3001
@@ -74,7 +74,7 @@ Health Check: http://localhost:3001/api/health
 
 
 
-📡 API Endpoints
+📡 **API Endpoints**
 Health Check
 
 GET /api/health
@@ -99,7 +99,7 @@ Returns confirmation with received data
 
 
 
-Example API Responses
+**Example API Responses**
 GET /api/health
 ```text
 json{
@@ -117,7 +117,7 @@ json{
   ]
 }
 ```
-🐳 Docker Configuration
+🐳 **Docker Configuration**
 Services
 Frontend Service
 
@@ -139,7 +139,7 @@ Custom bridge network (app-network)
 Internal service communication via container names
 Frontend proxy requests to http://backend:3001
 
-🔧 Development
+🔧** Development**
 Running in Development Mode
 
 Start services
@@ -169,7 +169,7 @@ Backend Dependencies:
 Update backend/package.json
 Rebuild the backend service
 
-🐛 Troubleshooting
+🐛 **Troubleshooting**
 Common Issues
 Backend Not Accessible
 
@@ -200,13 +200,14 @@ docker-compose up --build [service-name]
 
 # Clean up containers and networks
 docker-compose down --volumes --remove-orphans
-🔐 Environment Variables
+
+🔐 **Environment Variables**
 Backend Environment Variables
 
 NODE_ENV: Set to production (default in docker-compose.yml)
 PORT: Backend port (default: 3001)
 
-Customizing Environment
+**Customizing Environment**
 Create a .env file in the project root:
 envBACKEND_PORT=3001
 FRONTEND_PORT=80
@@ -220,7 +221,7 @@ Timeout: 10 seconds
 Retries: 3 attempts
 Start Period: 40 seconds
 
-🚀 Production Deployment
+🚀 **Production Deployment**
 For production deployment:
 
 Security: Update CORS origins in backend/server.js
